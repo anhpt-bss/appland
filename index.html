@@ -657,10 +657,46 @@
       uuid="1229b2ab-93c2-427a-88f3-b737fafaca93"
     ></div>
 
+    <!--   IC   -->
     <script src="https://lab.connect247.vn/webchat/webchat-plugin-min.js"></script>
-<!--     <script src="http://localhost:3000/webchat/webchat-plugin.js"></script> -->
-                                        
+    <!-- <script src="http://localhost:3000/webchat/webchat-plugin.js"></script> -->
+
+    <!--   Zalo   -->
     <div class="zalo-chat-widget" data-oaid="1382784956692117758" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+
+    <!--   FPT AI   -->
+    <script>
+      let __protocol = document.location.protocol;
+      let __baseUrl = __protocol + '//livechat.fpt.ai/v35/src';
+    
+      let prefixNameLiveChat = 'IC Bot';
+      let objPreDefineLiveChat = {
+              appCode: 'df05901feedac11507723fb05f9a3871',
+              themes: '',
+              appName: prefixNameLiveChat ? prefixNameLiveChat : 'Live support',
+              thumb: '',
+              icon_bot: ''
+          },
+          appCodeHash = window.location.hash.substr(1);
+      if (appCodeHash.length == 32) {
+          objPreDefineLiveChat.appCode = appCodeHash;
+      }
+    
+      let fpt_ai_livechat_script = document.createElement('script');
+      fpt_ai_livechat_script.id = 'fpt_ai_livechat_script';
+      fpt_ai_livechat_script.src = __baseUrl + '/static/fptai-livechat.js';
+      document.body.appendChild(fpt_ai_livechat_script);
+    
+      let fpt_ai_livechat_stylesheet = document.createElement('link');
+      fpt_ai_livechat_stylesheet.id = 'fpt_ai_livechat_script';
+      fpt_ai_livechat_stylesheet.rel = 'stylesheet';
+      fpt_ai_livechat_stylesheet.href = __baseUrl + '/static/fptai-livechat.css';
+      document.body.appendChild(fpt_ai_livechat_stylesheet);
+    
+      fpt_ai_livechat_script.onload = function () {
+          fpt_ai_render_chatbox(objPreDefineLiveChat, __baseUrl, 'livechat.fpt.ai:443');
+      }
+    </script>
   </body>
 </html>
